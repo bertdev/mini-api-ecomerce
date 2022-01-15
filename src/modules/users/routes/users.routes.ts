@@ -7,6 +7,7 @@ const usersRouter = Router();
 const usersController = new UsersController();
 
 usersRouter.get('/', usersController.index);
+
 usersRouter.post(
   '/',
   celebrate({
