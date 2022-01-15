@@ -15,7 +15,12 @@ function isAuthenticated(
 
   const [, token] = authHeader.split(' ');
   try {
-    const decodeToken = verify(token, authConfig.jwt.secret);
+    const decodedToken = verify(token, authConfig.jwt.secret);
+    const { sub } = decodedToken;
+    request.user = {
+      id: sub as string,
+    };
+
     return next();
   } catch (error) {
     throw new AppError('Invalid JWT token', 401);
