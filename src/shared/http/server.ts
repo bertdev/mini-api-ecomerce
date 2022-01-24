@@ -7,11 +7,13 @@ import '@shared/typeorm';
 import 'express-async-errors';
 import { errors } from 'celebrate';
 import uploadConfig from '@config/upload';
+import { pagination } from 'typeorm-pagination';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(pagination);
 
 app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);

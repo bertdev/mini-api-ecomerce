@@ -8,6 +8,7 @@ import UpdateCustomersService from '../services/UpdateCustomersService';
 class CustomersController {
   public async index(request: Request, response: Response): Promise<Response> {
     const listCustomersService = new ListCustomersService();
+
     const customers = await listCustomersService.execute();
 
     return response.status(200).json(customers);
