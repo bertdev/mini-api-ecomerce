@@ -6,6 +6,7 @@ import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/infra/typeorm';
 import 'express-async-errors';
+import '@shared/container';
 import { errors } from 'celebrate';
 import uploadConfig from '@config/upload';
 import { pagination } from 'typeorm-pagination';

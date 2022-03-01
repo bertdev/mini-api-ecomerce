@@ -4,6 +4,7 @@ import DeleteCustomersService from '../../../services/DeleteCustomersService';
 import ListCustomersService from '../../../services/ListCustomersService';
 import ShowCustomersService from '../../../services/ShowCustomersService';
 import UpdateCustomersService from '../../../services/UpdateCustomersService';
+import container from '@shared/container';
 
 class CustomersController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -24,7 +25,7 @@ class CustomersController {
 
   public async create(request: Request, response: Response): Promise<Response> {
     const { name, email } = request.body;
-    const createCustomersService = new CreateCustomersService();
+    const createCustomersService = container.resolve(CreateCustomersService);
     const customer = await createCustomersService.execute({ name, email });
 
     return response.status(201).json(customer);
